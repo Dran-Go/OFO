@@ -1,6 +1,5 @@
 import pandas as pd
 
-
 def get_dv(start = 20170101,end = 20180101):
     import jaqs_fxdayu
     jaqs_fxdayu.patch_all()
@@ -13,7 +12,7 @@ def get_dv(start = 20170101,end = 20180101):
     #--------------------------------------------------------
 
     #define
-    factor_list  = ['BBI'
+    factor_list  = ['BBI', 'net_profit', 'tot_shrhldr_eqy_excl_min_int'
         # ,'EPS','PE','PS','ACCA','CTOP','MA10RegressCoeff12','AR','BR','ARBR','np_parent_comp_ttm','total_share','bps'
                     ]
     check_factor = ','.join(factor_list)
@@ -61,7 +60,7 @@ def test(factor,data):
             raise TypeError('error index type')
         print ('{} OK!'.format(factor))
 
-import MktValue, alpha122, BIAS10, alpha136, LongDebtToAsset
+import MktValue, ROEAvg, AD20, alpha122, BIAS10, alpha136, SUE, LongDebtToAsset
 
-for f in ['MktValue', 'alpha122', 'BIAS10', 'alpha136', 'LongDebtToAsset']:
+for f in ['MktValue', 'ROEAvg', 'AD20', 'alpha122', 'BIAS10', 'alpha136', 'SUE', 'LongDebtToAsset']:
     test(f, globals()[f].run_formula(dv))
