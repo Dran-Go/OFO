@@ -44,5 +44,6 @@ def run_formula(dv, params=default_params):
     """
     name = "ROEAvg" # 和文件名即因子名一致
     value = dv.add_formula(name, "NPY(net_profit)*2/(EH(tot_shrhldr_eqy_excl_min_int)+EL(tot_shrhldr_eqy_excl_min_int))*100",
-                           is_quarterly=True, add_data=True)
+                           is_quarterly=True, add_data=True,
+                           register_funcs={"NPY": net_profit_year, "EH": eqy_head, "EL": eqy_last})
     return value
